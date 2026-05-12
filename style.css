@@ -1,0 +1,237 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#0f0f0f;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+    position:absolute;
+    width:100%;
+    top:0;
+    left:0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 70px;
+    z-index:100;
+}
+
+.logo{
+    color:white;
+    font-size:28px;
+    letter-spacing:3px;
+}
+
+nav ul{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    font-size:16px;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:#cfcfcf;
+}
+
+/* HERO SECTION */
+
+.hero{
+    height:100vh;
+    background-image:url('images/bir.jpg');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.45);
+}
+
+.overlay{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    padding:20px;
+}
+
+
+.overlay h1{
+    font-size:80px;
+    margin-bottom:20px;
+    letter-spacing:4px;
+}
+
+.overlay p{
+    font-size:24px;
+    margin-bottom:35px;
+    line-height:1.6;
+}
+
+button{
+    padding:14px 34px;
+    border:none;
+    border-radius:40px;
+    background:white;
+    color:black;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+    background:#ededed;
+}
+
+/* GALLERY SECTION */
+
+.gallery{
+    padding:100px 80px;
+    background:#111;
+}
+
+.gallery h2{
+    text-align:center;
+    font-size:42px;
+    margin-bottom:50px;
+}
+
+.gallery-container{
+    display:flex;
+    gap:30px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.card{
+    width:320px;
+    background:#1a1a1a;
+    border-radius:20px;
+    overflow:hidden;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card img{
+    width:100%;
+    height:400px;
+    object-fit:cover;
+}
+
+.card p{
+    padding:20px;
+    text-align:center;
+    font-size:17px;
+}
+
+/* STORIES SECTION */
+
+.stories{
+    padding:100px 80px;
+    background:#0d0d0d;
+}
+
+.stories h2{
+    text-align:center;
+    font-size:42px;
+    margin-bottom:50px;
+}
+
+.story-box{
+    max-width:800px;
+    margin:30px auto;
+    background:#1a1a1a;
+    padding:35px;
+    border-radius:20px;
+    line-height:1.8;
+}
+
+.story-box h3{
+    margin-bottom:15px;
+    font-size:28px;
+}
+
+.story-box p{
+    color:#d4d4d4;
+}
+
+/* CONTACT SECTION */
+
+.contact{
+    padding:100px 20px;
+    text-align:center;
+    background:black;
+}
+
+.contact h2{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.contact p{
+    margin-bottom:30px;
+    color:#cfcfcf;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media(max-width:768px){
+
+    nav{
+        padding:20px;
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .overlay h1{
+        font-size:50px;
+    }
+
+    .overlay p{
+        font-size:18px;
+    }
+
+    .gallery,
+    .stories{
+        padding:70px 20px;
+    }
+
+    .gallery h2,
+    .stories h2,
+    .contact h2{
+        font-size:32px;
+    }
+    .card{
+        text-decoration:none;
+        color:white;
+    }
+}
