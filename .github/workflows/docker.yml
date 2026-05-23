@@ -25,19 +25,21 @@ jobs:
       - name: Push Docker Image
         run: docker push mehaksaini0301/lost-with-mehak:latest
 
-  deploy:
-    needs: docker
-    runs-on: self-hosted
+deploy:
+  needs: docker
+  runs-on: self-hosted
 
-    steps:
-      - name: Pull latest image
-        run: docker pull mehaksaini0301/lost-with-mehak:latest
+  steps:
+    - name: Pull latest image
+      run: docker pull mehaksaini0301/lost-with-mehak:latest
 
-      - name: Stop old container
-        run: docker stop lost-container || exit 0
+    - name: Stop old container
+      run: docker stop lost-container
+      continue-on-error: true
 
-      - name: Remove old container
-        run: docker rm lost-container || exit 0
+    - name: Remove old container
+      run: docker rm lost-container
+      continue-on-error: true
 
-      - name: Run new container
-        run: docker run -d --name lost-container -p 8081:80 mehaksaini0301/lost-with-mehak:latest
+    - name: Run new container
+      run: docker run -d --name lost-container -p 8081:80 mehaksaini0301/lost-with-mehak:latest
