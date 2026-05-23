@@ -1,4 +1,4 @@
-name: Docker Build and Push
+name: Docker Build and Deploy
 
 on:
   push:
@@ -20,7 +20,24 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker Image
-        run: docker build -t mehaksaini0301/lost-with-mehak .
+        run: docker build -t mehaksaini0301/lost-with-mehak:latest .
 
       - name: Push Docker Image
-        run: docker push mehaksaini0301/lost-with-mehak
+        run: docker push mehaksaini0301/lost-with-mehak:latest
+
+  deploy:
+    needs: docker
+    runs-on: self-hosted
+
+    steps:
+      - name: Pull latest image
+        run: docker pull mehaksaini0301/lost-with-mehak:latest
+
+      - name: Stop old container
+        run: docker stop lost-container || exit 0
+
+      - name: Remove old container
+        run: docker rm lost-container || exit 0
+
+      - name: Run new container
+        run: docker run -d --name lost-container -p 8081:80 mehaksaini0301/lost-with-mehak:latest
